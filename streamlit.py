@@ -207,12 +207,24 @@ if selected == "Cancer Detection":
             st.subheader("Detected Cancer: ")
             model = models()
             res = model.predict(img)
-            top_label = res[0].probs.top5[0]  # Assuming top5 gives indices of top classes
-            class_name = res[0].names[top_label]  # Getting the name of the top class
-            confidence = res[0].probs.top5conf[0]  # Confidence for the top class
+            top_label = res[0].probs.top5[0]  
+            class_name = res[0].names[top_label]  
+            confidence = res[0].probs.top5conf[0]  
+            if class_name == "squamous.cell.carcinoma_left.hilum_T1_N2_M0_IIIa":
+                st.write("Detected Cancer: Squamous Cell Carcinoma")
+                st.write(f"Confidence Level: {confidence:.2f}")
 
-            st.write("Detected Cancer:", class_name)
-            st.write(f"Confidence Level: {confidence:.2f}")
+            elif class_name == "adenocarcinoma_left.lower.lobe_T2_N0_M0_Ib":
+                st.write("Detected Cancer: Adenocarcinoma")
+                st.write(f"Confidence Level: {confidence:.2f}")
+
+            elif class_name == "large.cell.carcinoma_left.hilum_T2_N2_M0_IIIa":
+                st.write("Detected Cancer: Large Cell Carcinoma")
+                st.write(f"Confidence Level: {confidence:.2f}")
+
+            elif class_name == "normal":
+                st.write("Detected Cancer: Normal - No Cancer Detected")
+                st.write(f"Confidence Level: {confidence:.2f}")
 
 if selected == "Contact Us":
     st.title("Contact Us")
@@ -238,10 +250,6 @@ if selected == "Contact Us":
     st.write("Chest cancer is detected through a variety of diagnostic tools depending on the type of cancer. Imaging tests like X-rays, CT scans, and MRIs are commonly used to visualize abnormalities in the chest. In some cases, a biopsy is performed to examine a tissue sample for cancerous cells. For specific cancers, such as breast cancer or lung cancer, tools like mammograms and low-dose CT scans are used. Early detection through regular screenings can save lives by catching the disease before it progresses.")
     st.write("**5. Is chest cancer preventable?**")
     st.write("While not all cases of chest cancer can be prevented, several steps can significantly reduce the risk. Avoiding tobacco use and minimizing exposure to carcinogens like asbestos or radon gas are critical measures. Maintaining a healthy lifestyle with a balanced diet and regular exercise also helps reduce the overall risk. Additionally, routine screenings for high-risk individuals play an important role in identifying potential issues early and preventing complications.")
-# Render the current page based on session state
 
-
-
-# About Section
 
 
